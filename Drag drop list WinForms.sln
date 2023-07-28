@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drag drop list WinForms", "Drag drop list WinForms\Drag drop list WinForms.csproj", "{BD71ADDE-01E8-44DC-9574-58A6FF4B8625}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD71ADDE-01E8-44DC-9574-58A6FF4B8625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD71ADDE-01E8-44DC-9574-58A6FF4B8625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD71ADDE-01E8-44DC-9574-58A6FF4B8625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD71ADDE-01E8-44DC-9574-58A6FF4B8625}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C397C5E3-3205-46DF-B0D6-140A449FDA01}
+	EndGlobalSection
+EndGlobal
