@@ -12,6 +12,10 @@ namespace Drag_drop_list_WinForms
 {
     public partial class DragAndSort : Form
     {
+        const int ElemHeight = 50;
+        const int SpaceBetween = 10;
+
+
         private List<PictureBox> pictureBoxes = new List<PictureBox>();
         private PictureBox selectedPictureBox;
         private int selectedPictureBoxIndex;
@@ -25,8 +29,8 @@ namespace Drag_drop_list_WinForms
         private void CreatePictureBox()
         {
             PictureBox pictureBox = new PictureBox();
-            pictureBox.Size = new Size(150, 50);
-            pictureBox.Location = new Point(10, 50 + (pictureBoxes.Count) * 60);
+            pictureBox.Size = new Size(150, ElemHeight);
+            pictureBox.Location = new Point(10, ElemHeight + (pictureBoxes.Count) * (ElemHeight + SpaceBetween));
             pictureBox.BackColor = Color.LightGray;
             pictureBox.BorderStyle = BorderStyle.FixedSingle;
             pictureBox.Paint += PictureBox_Paint;
@@ -39,9 +43,9 @@ namespace Drag_drop_list_WinForms
             pictureBoxes.Add(pictureBox);
             Controls.Add(pictureBox);
 
-            if (pictureBox.Top + pictureBox.Height + 50 >= Height)
+            if (pictureBox.Top + pictureBox.Height + ElemHeight >= Height)
             {
-                Height = pictureBox.Top + pictureBox.Height + 50;
+                Height = pictureBox.Top + pictureBox.Height + ElemHeight;
             }
         }
         private void PictureBox_Paint(object sender, PaintEventArgs e)
@@ -81,14 +85,14 @@ namespace Drag_drop_list_WinForms
             int newY = selectedPictureBox.Top + e.Y - mouseDownLocation.Y;
             int pictureBoxHeight = selectedPictureBox.Height;
 
-            if (newY < 50)
-                newY = 50;
+            if (newY < ElemHeight)
+                newY = ElemHeight;
             else if (newY + pictureBoxHeight > ClientSize.Height)
                 newY = ClientSize.Height - pictureBoxHeight;
 
             selectedPictureBox.Top = newY;
 
-            int newIndex = (selectedPictureBox.Top - 50 + e.Y) / 60;
+            int newIndex = (selectedPictureBox.Top - ElemHeight + e.Y) / (ElemHeight + SpaceBetween);
             if (newIndex < 0)
                 newIndex = 0;
             else if (newIndex >= pictureBoxes.Count)
@@ -100,18 +104,18 @@ namespace Drag_drop_list_WinForms
                 {
                     for (int i = selectedPictureBoxIndex + 1; i <= newIndex; i++)
                     {
-                        pictureBoxes[i].Top = 50 + (i - 1) * 60;
+                        pictureBoxes[i].Top = ElemHeight + (i - 1) * (ElemHeight + SpaceBetween);
                     }
                 }
                 else
                 {
                     for (int i = selectedPictureBoxIndex - 1; i >= newIndex; i--)
                     {
-                        pictureBoxes[i].Top = 50 + (i + 1) * 60;
+                        pictureBoxes[i].Top = ElemHeight + (i + 1) * (ElemHeight + SpaceBetween);
                     }
                 }
 
-                highlightPictureBox.Top = 50 + newIndex * 60;
+                highlightPictureBox.Top = ElemHeight + newIndex * (ElemHeight + SpaceBetween);
 
                 pictureBoxes.RemoveAt(selectedPictureBoxIndex);
                 pictureBoxes.Insert(newIndex, selectedPictureBox);
